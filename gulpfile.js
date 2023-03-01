@@ -76,10 +76,7 @@ export const scripts = () => src(path.scripts.root)
 export const sprite = () => src(`${path.img.root}/**/*.svg`)
   .pipe(svgmin({
     plugins: [
-      {
-        name: 'removeViewBox',
-        active: false
-      }
+      { removeViewBox: false }
     ]
   }))
   .pipe(cheerio({

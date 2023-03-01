@@ -1,4 +1,7 @@
-.header {}
+.header {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
 
 .header__container {
   @include container;
@@ -10,4 +13,18 @@
   padding-bottom: 15px;
 }
 
-.header__logo {}
+.header__logo {
+  margin-top: -10px;
+}
+
+.header__nav {
+  @include media-max(lg) { order: 3; }
+}
+
+div.header__social {
+  @include media-max(md) { display: none; }
+  @include media-min(lg) {
+    order: 2;
+    margin-left: 20px;
+  }
+}
