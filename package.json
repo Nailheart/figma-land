@@ -1,0 +1,35 @@
+{
+  "name": "name_project",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "browser-sync": "latest",
+    "del": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-cheerio": "latest",
+    "gulp-concat": "latest",
+    "gulp-csso": "latest",
+    "gulp-dart-sass": "latest",
+    "gulp-htmlmin": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-plumber": "latest",
+    "gulp-rename": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-svgmin": "latest",
+    "gulp-svgstore": "latest",
+    "gulp-terser": "latest",
+    "gulp-webp": "latest"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "start": "gulp dev",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11"
+  ]
+}

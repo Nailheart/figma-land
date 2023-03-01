@@ -1,0 +1,13 @@
+.header {}
+
+.header__container {
+  @include container;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.header__logo {}
