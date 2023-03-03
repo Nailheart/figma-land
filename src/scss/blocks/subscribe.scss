@@ -1,0 +1,23 @@
+.subscribe {
+  text-align: center;
+}
+
+.subscribe__title {
+  font-size: 2rem;
+  line-height: 2.8rem;
+  letter-spacing: .1px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.subscribe__text {
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  margin-top: 0;
+
+  &:last-of-type { margin-bottom: 0; }
+}
+
+.subscribe__form {
+  margin-top: 30px;
+}

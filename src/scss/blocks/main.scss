@@ -1,0 +1,5 @@
+.main {}
+
+.main__container {
+  @include container;
+}

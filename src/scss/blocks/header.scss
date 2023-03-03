@@ -1,6 +1,13 @@
 .header {
   color: var(--color-white);
   background-color: var(--color-primary);
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  min-height: 100vh;
+  padding-bottom: 90px;
+  box-sizing: border-box;
 }
 
 .header__container {
@@ -27,4 +34,8 @@ div.header__social {
     order: 2;
     margin-left: 20px;
   }
+}
+
+.header__intro {
+  margin-top: 90px;
 }

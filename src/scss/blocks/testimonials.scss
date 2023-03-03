@@ -1,0 +1,18 @@
+.testimonials {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+
+  @include media-max(md) {
+    max-width: 600px;
+  }
+}
+
+.testimonials__header {
+  margin-bottom: 60px;
+}
+
+.testimonials__button-wrapper {
+  text-align: center;
+  margin-top: 60px;
+}
