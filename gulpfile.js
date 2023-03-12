@@ -5,7 +5,7 @@ import concat from 'gulp-concat';
 import csso from 'gulp-csso';
 import sass from 'gulp-dart-sass';
 import htmlmin from 'gulp-htmlmin';
-import imagemin from 'gulp-imagemin';
+import imagemin, { gifsicle, mozjpeg, optipng } from 'gulp-imagemin';
 import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import sourcemap from 'gulp-sourcemaps';
@@ -41,7 +41,8 @@ const path = {
   },
   img: {
     root: `${dirs.src}/img/`,
-    save: `${dirs.dest}/img/`
+    save: `${dirs.dest}/img/`,
+    webp: `${dirs.dest}/img/webp/`
   }
 };
 
@@ -73,7 +74,7 @@ export const scripts = () => src(path.scripts.root)
   .pipe(dest(path.scripts.save));
 
 // Sprite
-export const sprite = () => src(`${path.img.root}/**/*.svg`)
+export const sprite = () => src(`${path.img.root}/icons/*.svg`)
   .pipe(svgmin({
     plugins: [
       { removeViewBox: false }
@@ -94,27 +95,21 @@ export const sprite = () => src(`${path.img.root}/**/*.svg`)
 // Imagemin
 export const img = () => src(`${path.img.root}**/*`)
   .pipe(imagemin([
-    imagemin.mozjpeg({quality: 75, progressive: true}),
-    imagemin.optipng({optimizationLevel: 3}),
-    imagemin.svgo({
-      plugins: [
-        { removeViewBox: false },
-        { cleanupIDs: true },
-        { removeDimensions: true }
-      ]
-    })
+    gifsicle({interlaced: true}),
+    mozjpeg({quality: 75, progressive: true}),
+    optipng({optimizationLevel: 5}),
   ]))
-  .pipe(dest(path.img.save))
-  .pipe(webp({quality: 90}))
   .pipe(dest(path.img.save));
+
+export const createWebp = () => src(`${path.img.root}**/*.{jpg,jpeg,png}`)
+  .pipe(webp({quality: 90}))
+  .pipe(dest(path.img.webp));
 
 // Copy
 export const copy = () => src([
     `${dirs.src}/fonts/**/*`,
     `${path.img.root}**/*`,
-  ], {
-    base: dirs.src
-  })
+  ], {base: dirs.src})
 .pipe(dest(dirs.dest));
 
 // Fonts
@@ -134,11 +129,11 @@ export const devWatch = () => {
   watch(`${path.html.root}`, html).on('change', browserSync.reload);
   watch(`${path.styles.root}`, styles).on('change', browserSync.reload);
   watch(`${path.scripts.root}`, scripts).on('change', browserSync.reload);
-  watch(`${path.scripts.root}`, copy).on('change', browserSync.reload);
+  watch([`${path.img.root}`, `${dirs.src}/fonts/`], copy).on('change', browserSync.reload);
 };
 
 // Develop
 export const dev = series(clean, parallel(html, styles, scripts, sprite, copy), devWatch);
 
 // Build
-export const build = series(clean, parallel(html, styles, scripts, sprite, fonts, img));
+export const build = series(clean, parallel(html, styles, scripts, sprite, img, fonts));
