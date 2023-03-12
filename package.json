@@ -5,6 +5,7 @@
   "devDependencies": {
     "browser-sync": "latest",
     "del": "latest",
+    "gh-pages": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-cheerio": "latest",
