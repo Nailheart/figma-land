@@ -17,9 +17,17 @@
   background-color: #f4f4f4;
   border: 1px solid #e8e8e8;
   border-radius: 38px;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
   box-sizing: border-box;
+  transition: .3s;
 
   &:last-child { margin-bottom: 0; }
+
+  &:hover,
+  &:focus {
+    outline-color: var(--color-blue);
+  }
 }
 
 .form__textarea {
@@ -29,7 +37,14 @@
   background-color: #f4f4f4;
   border: 1px solid #e8e8e8;
   box-sizing: border-box;
+  outline: 2px solid transparent;
   resize: none;
+  transition: .3s;
+
+  &:hover,
+  &:focus {
+    outline-color: var(--color-blue);
+  }
 }
 
 .form__submit {

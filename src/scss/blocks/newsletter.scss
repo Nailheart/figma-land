@@ -1,7 +1,52 @@
+.newsletter__container {
+  @include media-min(lg) {
+    display: grid;
+    grid-template-columns: 1fr 40%;
+    gap: 20px 50px;
+  }
+  @include media-min(xl) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.newsletter__header {
+  @include media-min(lg) {
+    text-align: left;
+    margin: auto 0 0;
+  }
+}
+
 .newsletter__img {
   width: 100%;
   height: auto;
   max-width: 670px;
   max-height: 515px;
   margin: 70px auto;
+
+  @include media-min(lg) {
+    order: -1;
+    grid-row: span 2;
+    margin: 0;
+  }
+}
+
+.newsletter__subscribe {
+  @include media-min(lg) {
+    & * { text-align: left; }
+  }
+}
+
+.newsletter__form {
+  @include media-min(lg) {
+    flex-direction: row;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.newsletter__submit {
+  @include media-min(lg) {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
 }

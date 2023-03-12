@@ -4,15 +4,16 @@
 
 .subscribe__title {
   font-size: 2rem;
-  line-height: 2.8rem;
+  line-height: 1.25;
   letter-spacing: .1px;
   margin-top: 0;
   margin-bottom: 10px;
 }
 
 .subscribe__text {
+  color: var(--color-secondary);
   font-size: 1.8rem;
-  line-height: 2.5rem;
+  line-height: 1.25;
   margin-top: 0;
 
   &:last-of-type { margin-bottom: 0; }

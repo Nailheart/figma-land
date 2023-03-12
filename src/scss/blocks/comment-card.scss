@@ -11,7 +11,8 @@
 }
 
 .comment-card__text {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  line-height: 1.4;
   text-align: center;
   margin-top: 0;
 
@@ -22,14 +23,19 @@
 
 .comment-card__author {
   display: flex;
+  align-items: center;
   margin-top: 40px;
 }
 
 .comment-card__avatar {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   margin-right: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  @include media-min(md) { margin-right: 15px; }
 }
 
 .comment-card__content {
@@ -42,9 +48,12 @@
   font-size: 1.2rem;
   font-weight: 700;
 
-  @include media-min(md) { font-size: 1.6rem; }
+  @include media-min(md) { font-size: 1.8rem; }
 }
 
 .comment-card__profession {
+  color: var(--color-secondary);
   font-size: 1.5rem;
+
+  @include media-min(md) { font-size: 1.8rem; }
 }

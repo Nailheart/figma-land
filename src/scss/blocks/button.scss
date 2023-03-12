@@ -7,13 +7,21 @@
   line-height: 1;
   padding: 16px 60px;
   background-color: var(--color-blue);
-  border: none;
+  border: 2px solid transparent;
   border-radius: 35px;
+  box-sizing: border-box;
   cursor: pointer;
   transition: .2s;
 
   &:hover,
   &:focus-visible {
-    filter: brightness(1.15);
+    color: var(--color-blue);
+    background-color: transparent;
+    border-color: var(--color-blue);
+  }
+
+  @include media-max(md) {
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }

@@ -1,9 +1,24 @@
+.organize__container {
+  display: grid;
+  align-items: center;
+  gap: 50px;
+
+  @include media-min(lg) {
+    grid-template-columns: 1fr 1fr;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+.organize__header {
+  @include media-min(lg) { text-align: left; }
+}
+
 .organize__img {
   width: 100%;
   height: auto;
   max-width: 625px;
   max-height: 350px;
-  margin-top: 50px;
 
   @include media-max(lg) {
     margin-left: auto;

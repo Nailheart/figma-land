@@ -39,6 +39,13 @@
     .pricing__button {
       color: var(--color-blue);
       background-color: var(--color-white);
+
+      &:hover,
+      &:focus-visible {
+        color: var(--color-white);
+        background-color: transparent;
+        border-color: var(--color-white);
+      }
     }
   }
 }

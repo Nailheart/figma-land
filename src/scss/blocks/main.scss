@@ -1,4 +1,6 @@
-.main {}
+.main {
+  overflow: hidden;
+}
 
 .main__container {
   @include container;

@@ -1,24 +1,35 @@
 .intro {
-  text-align: center;
+  display: flex;
+  color: var(--color-white);
+  min-height: 100vh;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-color: var(--color-primary);
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  box-sizing: border-box;
 }
 
 .intro__container {
   @include container;
+  max-width: 500px;
+  margin: auto;
+
+  @include media-min(lg) { margin-left: 250px; }
 }
 
 .intro__title {
-  font-size: 4.8rem;
-  font-weight: 400;
-  max-width: 840px;
+  font-size: 5.2rem;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
 }
 
 .intro__desc {
-  font-size: 2.8rem;
-  line-height: 4rem;
-  max-width: 840px;
+  font-size: 2.2rem;
+  line-height: 1.6;
   margin-left: auto;
   margin-right: auto;
 
@@ -28,4 +39,9 @@
 
 .intro__button {
   margin: 60px auto 0;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-white);
+  }
 }
