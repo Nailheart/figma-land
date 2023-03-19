@@ -43,6 +43,10 @@ const path = {
     root: `${dirs.src}/img/`,
     save: `${dirs.dest}/img/`,
     webp: `${dirs.dest}/img/webp/`
+  },
+  favicon: {
+    root: `${dirs.src}/favicon`,
+    save: `${dirs.dest}/favicon`
   }
 };
 
@@ -101,6 +105,11 @@ export const img = () => src(`${path.img.root}**/*`)
   ]))
   .pipe(dest(path.img.save));
 
+// Favicon
+export const favicon = () => src(`${path.favicon.root}**/*`)
+  .pipe(dest(path.favicon.save));
+
+// Create webp
 export const createWebp = () => src(`${path.img.root}**/*.{jpg,jpeg,png}`)
   .pipe(webp({quality: 90}))
   .pipe(dest(path.img.webp));
@@ -109,6 +118,7 @@ export const createWebp = () => src(`${path.img.root}**/*.{jpg,jpeg,png}`)
 export const copy = () => src([
     `${dirs.src}/fonts/**/*`,
     `${path.img.root}**/*`,
+    `${path.favicon.root}**/*`,
   ], {base: dirs.src})
 .pipe(dest(dirs.dest));
 
@@ -136,4 +146,4 @@ export const devWatch = () => {
 export const dev = series(clean, parallel(html, styles, scripts, sprite, copy), devWatch);
 
 // Build
-export const build = series(clean, parallel(html, styles, scripts, sprite, img, fonts));
+export const build = series(clean, parallel(html, styles, scripts, sprite, img, favicon, fonts));
