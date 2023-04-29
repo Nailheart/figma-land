@@ -94,7 +94,6 @@
           scrollTrigger: {
             trigger: targets,
             start: 'top 80%',
-            toggleActions: 'restart none none none',
           },
           opacity: 0,
           x: config.x,
