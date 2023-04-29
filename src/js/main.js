@@ -46,7 +46,7 @@
     },
   });
 
-  // Swiper
+  // Swiper slider
   const swiper = new Swiper('.swiper', {
     slidesPerView: 1,
     spaceBetween: 30,
@@ -61,4 +61,66 @@
       prevEl: '.swiper-button-prev',
     },
   });
+
+  // GSAP animation
+  gsap.registerEffect({
+    name: 'fadeIn',
+    effect: (targets, config) => {
+      return gsap.from(targets, {
+          scrollTrigger: {
+            trigger: targets,
+            start: 'top 90%',
+          },
+          y: 70,
+          ease: 'back',
+          stagger: .3,
+          duration: .8,
+          scale: .5,
+          opacity: 0,
+        }
+      );
+    },
+  });
+
+  gsap.registerEffect({
+    name: 'slideIn',
+    defaults: {
+      x: '100%',
+      ease: 'none',
+      duration: .8,
+    },
+    effect: (targets, config) => {
+      return gsap.from(targets, {
+          scrollTrigger: {
+            trigger: targets,
+            start: 'top 80%',
+            toggleActions: 'restart none none none',
+          },
+          opacity: 0,
+          x: config.x,
+          ease: config.ease,
+          duration: config.duration,
+        }
+      );
+    },
+  });
+
+  gsap.from(['.intro__title', '.intro__desc', '.intro__gsap-trigger'], {
+    x: -300,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.3,
+    ease: 'back',
+  });
+
+  gsap.effects.fadeIn('.features__item');
+  gsap.effects.fadeIn('.features__preview');
+  gsap.effects.fadeIn('.pricing__item');
+
+  gsap.effects.slideIn('.organize__header', { x: '-100%', ease: 'back', duration: 1 });
+  gsap.effects.slideIn('.organize__img');
+
+  gsap.effects.slideIn('.newsletter__img', { x: '-100%' });
+  gsap.effects.slideIn('.newsletter__header', { ease: 'back', duration: 1 });
+  gsap.effects.slideIn('.newsletter__subscribe', { ease: 'back', duration: 1 });
 })();

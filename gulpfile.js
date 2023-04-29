@@ -36,7 +36,7 @@ const path = {
     save: `${dirs.dest}`
   },
   scripts: {
-    root: `${dirs.src}/js/**/*.js`,
+    root: `${dirs.src}/js/`,
     save: `${dirs.dest}/js/`
   },
   img: {
@@ -71,10 +71,13 @@ export const styles = () => src(path.styles.compile)
   .pipe(dest(path.styles.save));
 
 // Scripts
-export const scripts = () => src(path.scripts.root)
+export const scripts = () => src([`${path.scripts.root}**/*.js`, `!${path.scripts.root}**/*min.js`])
   .pipe(concat('main.js'))
   .pipe(terser())
   .pipe(rename({ suffix: '.min' }))
+  .pipe(dest(path.scripts.save));
+
+export const libs = () => src(`${path.scripts.root}**/*min.js`)
   .pipe(dest(path.scripts.save));
 
 // Sprite
@@ -143,7 +146,7 @@ export const devWatch = () => {
 };
 
 // Develop
-export const dev = series(clean, parallel(html, styles, scripts, sprite, copy), devWatch);
+export const dev = series(clean, parallel(html, styles, scripts, libs, sprite, copy), devWatch);
 
 // Build
 export const build = series(clean, parallel(html, styles, scripts, sprite, img, favicon, fonts));
