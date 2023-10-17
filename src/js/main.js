@@ -72,7 +72,7 @@
             start: 'top 90%',
           },
           y: 70,
-          ease: 'back',
+          ease: "sine.out",
           stagger: .3,
           duration: .8,
           scale: .5,
@@ -109,17 +109,17 @@
     opacity: 0,
     duration: 1,
     stagger: 0.3,
-    ease: 'back',
+    ease: "back",
   });
 
   gsap.effects.fadeIn('.features__item');
   gsap.effects.fadeIn('.features__preview');
   gsap.effects.fadeIn('.pricing__item');
 
-  gsap.effects.slideIn('.organize__header', { x: '-100%', ease: 'back', duration: 1 });
+  gsap.effects.slideIn('.organize__header', { x: '-100%', ease: "sine.out", duration: 1 });
   gsap.effects.slideIn('.organize__img');
 
   gsap.effects.slideIn('.newsletter__img', { x: '-100%' });
-  gsap.effects.slideIn('.newsletter__header', { ease: 'back', duration: 1 });
-  gsap.effects.slideIn('.newsletter__subscribe', { ease: 'back', duration: 1 });
+  gsap.effects.slideIn('.newsletter__header', { ease: "sine.out", duration: 1 });
+  gsap.effects.slideIn('.newsletter__subscribe', { ease: "sine.out", duration: 1 });
 })();

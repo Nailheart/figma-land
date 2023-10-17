@@ -149,4 +149,4 @@ export const devWatch = () => {
 export const dev = series(clean, parallel(html, styles, scripts, libs, sprite, copy), devWatch);
 
 // Build
-export const build = series(clean, parallel(html, styles, scripts, sprite, img, favicon, fonts));
+export const build = series(clean, parallel(html, styles, scripts, libs, sprite, img, favicon, fonts));
